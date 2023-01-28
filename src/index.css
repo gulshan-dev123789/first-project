@@ -1,0 +1,97 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Roboto:wght@700&display=swap');
+
+
+*{
+    font-family: 'Roboto', sans-serif;
+    /* text-transform: capitalize; */
+}
+
+input[data-input]  {
+    border-width: 0 0 0 0;
+    border-bottom: 2px solid black;
+    outline: none !important;
+    /* margin-top: -5px; */
+    background-color: transparent;
+}
+.navbarcustum{
+    padding: 25px;
+    height: auto;
+    position: sticky;
+   
+    z-index: 12;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+
+}
+
+.form-box{
+    background-color: whitesmoke;
+}
+
+
+.margin-child  .nav-link{
+ margin-right: 40px !important;
+ font-weight: 600;
+}
+
+
+
+.profilecover{
+    height: 400px;
+    /* background-color: aqua; */
+    isolation: isolate;
+    position: relative;
+}
+.profilecover ::after{
+    content: '';
+    background: cyan;
+    z-index: -1;
+    inset: 0;
+    position: absolute;
+    opacity: .5;
+    
+}
+.profile-picture{
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background-color: black;
+    position: relative;
+    top: -70px;
+}
+.profile-picture img{
+    object-fit: cover;
+    height: inherit;
+    border-radius: 50%;
+    width: inherit;
+}
+.loginbox{
+    border-radius: 20px;
+}
+.login-head {
+    margin-top: 100px;
+}
+
+.home-container{
+    height: 80vh;
+}
+.welcome{
+    
+    font-family: 'Merriweather', serif;
+    background-image: linear-gradient(90deg, #10e6e2 , #109ee6);
+    background-clip: text;
+    color: transparent;
+}
+.navlogo{
+    margin-left: 50px;
+    font-size: 45px;
+
+
+}
+@media screen and (max-width: 670px) {
+    .navlogo{
+    margin-left: 0px;
+    font-size: 40px;
+    
+}
+  }
