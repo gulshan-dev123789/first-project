@@ -1,57 +1,25 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const Profile = () => {
-const[state,setState]=useState()
-const[success,setSuccess]=useState(false)
-const[name,setName]=useState()
-
-const constuserInfo=async()=>{
-  try {
-    const {data} = await axios.get("/user/api/info",{Headers:{Accept:"application/json","content-type":"application/json"},withCredential:true})
-    // console.log(data)
-    setSuccess(data.success)
-    // console.log(data.user.name.firstName)
-    setName(data.user.name.firstName)
+  const {loading,auth,user,message}= useSelector((s)=>s.uses)
 
 
-
-    
-    
- 
-
-
-
-
-    
-  } catch (error) {
-    // console.log(error.response.data.message)
-    setState(error.response.data.message)
-    
-  }
-
-
-
-}
-
-
-  useEffect(()=>{
-    constuserInfo()
-  },[])
   return (
    
     <>  <div className='container-fluid d-flex  flex-column justify-content-center align-items-center '>
         <div className='container-fluid d-flex justify-content-center align-items-center profilecover' >
            
-            {success?( <p className='text-capitalize' >welcome to your profile</p> ):(<p className='text-capitalize'>please register first</p>)}
+            {auth?( <p className='text-capitalize' >welcome to your profile</p> ):(<p className='text-capitalize'>please register first</p>)}
         </div>
 
-        <div className='profile-picture' > <img  src='unknown.png' /> </div>
+        {user?.image?<><div className='profile-picture' > <img  src={user.image} /> </div></>:<><div className='profile-picture' > <img  src='unknown.png' /> </div></>}
         </div>
 
         <div className='container container-fluid d-flex justify-content-center align-items-center ' >
 
-          {success?(<p className='text-capitalize'>welcome to your Profile <span className='h4 mx-3 '>{name}</span> </p>):(<p className='text-capitalize'>{state}</p>)}
+          {auth?(<p className='text-capitalize'>welcome to your Profile <span className='h4 mx-3 '>{user?.name?.firstName}</span> </p>):(<p className='text-capitalize'>null</p>)}
           
 
         </div>

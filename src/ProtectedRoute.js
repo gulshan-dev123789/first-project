@@ -1,15 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
-import { Contextuse } from './context/Cprovider'
 
 const ProtectedRoute = () => {
-const {state:{isAuth},dispatch}= Contextuse()
+ const { loading,auth,user,message  }= useSelector((s)=>s.uses)
+
+
 
 
 
   return (
     <>
-    {isAuth?<Outlet/>:<Navigate to="/login" />}
+    {auth?<Outlet/>:<Navigate to="/login" />}
     </>
   )
 }

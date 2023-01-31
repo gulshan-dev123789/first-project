@@ -1,49 +1,64 @@
-import axios from 'axios'
-import React from 'react'
+
+import { wait } from '@testing-library/user-event/dist/utils';
+import axios from 'axios';
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
-import { Contextuse } from './context/Cprovider';
+
 import "./index.css";
+import Loadingpage from './Loadingpage';
+import { loginuser } from './redux/AsyncActions';
 
 const Login = () => {
-  const {state:{isAuth},dispatch}= Contextuse()
+  const navigate = useNavigate()
+  const {loading,auth,user,message}= useSelector((s)=>s.uses)
+  const dispatchh = useDispatch()
 
 
-  const navigate= useNavigate()
-    const {register,handleSubmit,watch,reset,formState: { errors, isValid }}=useForm()
-
-    
-    const onSubmiit = async (loginData) => {
-
-    try {
-      const {data} = await axios.post("/user/api/login",loginData)
-      console.log(data)
-      dispatch({type:"AUTHENTICATION",payload:true})
-
-      reset()
-      navigate("/profile",{replace:true})
-      
-
-
-
-
-
-      
-    } catch (error) {
-      console.log(error)
+  useEffect(()=>{
+    if(auth){
+      navigate("/profile")
       
     }
+  })
+ 
 
 
-        
+const forgotPassord= async()=>{
 
+
+    navigate("/forgotpassword")
+   
+}
+
+ 
+
+ 
+const {register,handleSubmit,reset,formState: { errors, isValid }}=useForm()
+
+const onSubmiit = async (loginData) => {
+
+      dispatchh(loginuser(loginData)) 
+      reset ()
       }
+  
+  
+  
+  
+  
   return (
     
     <>
 
-    <div className='container d-flex justify-content-center  login-head ' >
-    <p className='display-6 text-center ' >please login to se your contribution</p>
+   {loading?<>
+   <Loadingpage/>
+    
+   </>:<>
+
+
+   <div className='container d-flex justify-content-center  login-head ' >
+    <p className='display-6 text-center text-capitalize ' >please login to see your contribution</p>
       
     </div>
       <div className="container my-5  ">
@@ -59,15 +74,20 @@ const Login = () => {
                   <input data-input type="email" className="form-control" 
                     {...register('email',{required: "Please enter Email address."})}
                   />
-                  {errors.email && <p>{errors.email.message}</p>}
+                  {errors.email && <p className='text-danger mt-3' >{errors.email.message}</p>}
                 </div>
                 <div className="col-12  mb-3 ">
                   <label className="form-label">Password</label>
                   <input data-input type="password" className="form-control" 
                     {...register('password',{required: "Please enter your password."})}
                   />
-                   {errors.password && <p>{errors.password.message}</p>}
+                   {errors.password && <p className='text-danger mt-3'  >{errors.password.message}</p>}
                 </div>
+
+                <div className="col-12  mb-3 ">
+                 <div className='small-text' onClick={forgotPassord} >forgot passwords</div>
+                </div>
+
               </div>
 
               
@@ -83,6 +103,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+   </>}
     </>
   
   

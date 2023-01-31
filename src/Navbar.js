@@ -1,18 +1,21 @@
 import axios from 'axios';
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { Contextuse } from './context/Cprovider';
+
 import "./index.css";
-const Navbar = () => {
+import { logoutreq } from './redux/AsyncActions';
+const Navbar = ({auth}) => {
+  const dispatch =useDispatch()
 
- const {state:{isAuth},dispatch}= Contextuse()
 
 
-  const handleLogOut= async()=>{
+
+  const handleLogOut= async()=>{  
+    dispatch(logoutreq())
 
     
-      const {data}=  await axios.post("/user/api/logout",{Headers:{Accept:"application/json","content-type":"application/json"},withCredential:true})
-      dispatch({type:"AUTHENTICATION",payload:false})
+      
 
 
       
@@ -32,7 +35,7 @@ const Navbar = () => {
       <div className="navbar-nav margin-child ">
         
       <Link className="nav-link active " to="/">Home</Link>
-       {isAuth?(<>
+       {auth?(<>
         <div onClick={handleLogOut}><Link className="nav-link" to="/login" >Logout</Link></div>
         <Link className="nav-link" to="/profile">Profile</Link>
        </>):<>

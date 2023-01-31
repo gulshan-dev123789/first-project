@@ -26,6 +26,9 @@ input[data-input]  {
 
 .form-box{
     background-color: whitesmoke;
+   padding-top: 100px !important;
+   border-radius: 20px;
+    
 }
 
 
@@ -51,20 +54,29 @@ input[data-input]  {
     opacity: .5;
     
 }
+
 .profile-picture{
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     border-radius: 50%;
     background-color: black;
     position: relative;
     top: -70px;
 }
 .profile-picture img{
+
     object-fit: cover;
     height: inherit;
     border-radius: 50%;
     width: inherit;
 }
+
+div[data-img="one"]{
+    height: 250px;
+    width: 250px;
+    top: 70px!important;
+}
+
 .loginbox{
     border-radius: 20px;
 }
@@ -81,11 +93,36 @@ input[data-input]  {
     background-image: linear-gradient(90deg, #10e6e2 , #109ee6);
     background-clip: text;
     color: transparent;
+    
+}
+.animationdiv{
+    animation: updown 0.555ms ease-in-out infinite  alternate  ;
+}
+@keyframes updown {
+    to{
+        transform: translate( 0px , 20px);
+    }
+    
 }
 .navlogo{
     margin-left: 50px;
     font-size: 45px;
 
+
+}
+.submit-button{
+    font-size: 270%;
+    height: 70px;
+    
+    margin-top: 25px;
+    min-width: 400px;
+    font-family: 'Merriweather', serif;
+    
+}
+.small-text{
+    font-size: 12px;
+    font-weight: 200!important;
+    cursor: pointer;
 
 }
 @media screen and (max-width: 670px) {
@@ -94,4 +131,31 @@ input[data-input]  {
     font-size: 40px;
     
 }
+    .submit-button{
+        min-width: 100%;
+    }
   }
+
+
+
+  .fullheight{
+    height: 80vh;
+  }
+
+
+  .loader{
+    height:80px;
+    width: 80px;
+    border: 0 0 0 0;
+    border-bottom: 1px solid black;
+    border-radius: 50%;
+    animation: loader 0.4s linear infinite forwards ;
+  }
+  @keyframes loader {
+    
+    to{
+        transform:rotate(340deg);
+    }
+  }
+
+
