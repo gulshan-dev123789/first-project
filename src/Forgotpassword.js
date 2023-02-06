@@ -11,11 +11,7 @@ const Forgotpassword = () => {
   const forgotpasswordrequest=async(e)=>{
     try {
       console.log(Email)
-
-
-
-    
-    const {data}= await axios.post("/user/api/forgotpassword",{email:Email},{Headers:{Accept:"application/json","content-type":"application/json"},credentials:"include"})
+      const {data}= await axios.post("/user/api/forgotpassword",{email:Email},{Headers:{Accept:"application/json","content-type":"application/json"},credentials:"include"})
       setShow(data.success)
       
     } catch (error) {

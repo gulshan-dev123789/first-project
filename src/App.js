@@ -12,6 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { profileLoad } from "./redux/AsyncActions";
 import Forgotpassword from "./Forgotpassword";
 import toast ,{ Toaster } from "react-hot-toast";
+import Productregister from "./Productregister";
+import ProductsListing from "./ProductsListing";
+import Cartlisting from "./Cartlisting";
+import Payment from "./Payment";
 
 
 
@@ -19,8 +23,8 @@ import toast ,{ Toaster } from "react-hot-toast";
 function App() {
 
 const dispatch = useDispatch()
-const {loading,auth,user,message,err}= useSelector((s)=>s.uses)
- 
+const {loading,auth,user,role,message,err,cart}= useSelector((s)=>s.uses)
+ console.log(user)
 
  useEffect(()=>{
 
@@ -48,14 +52,29 @@ const {loading,auth,user,message,err}= useSelector((s)=>s.uses)
 
   return (
   <BrowserRouter>
-  <Navbar auth={auth} />
+  <Navbar auth={auth} role={role} />
     <Routes>
     <Route path="/" element={<Home auth={auth} />} />
     <Route path="/register"  element={<Register/>}/>
       
+    <Route path="/payment" element={<Payment/>} />
+    <Route path="/shop" element={<ProductsListing/>} />
 
     <Route   element={<ProtectedRoute />}>
     <Route path="/profile"  element={<Profile/>}/>
+    <Route path="/cartlisting" element={<Cartlisting/>} />
+
+    
+
+    {role=="admin" &&  <>
+    
+      <Route path="/createproduct" element={<Productregister/>} />
+   
+
+
+    </>}
+
+
    </Route>
 
      
@@ -63,6 +82,11 @@ const {loading,auth,user,message,err}= useSelector((s)=>s.uses)
       <Route path="/forgotpassword" element={<Forgotpassword />} />
       <Route path="*" element={<Home />} />
     </Routes>
+
+
+
+
+
     <Toaster/>
     
   </BrowserRouter>
@@ -70,3 +94,6 @@ const {loading,auth,user,message,err}= useSelector((s)=>s.uses)
 }
 
 export default App;
+
+
+// angali1111@@

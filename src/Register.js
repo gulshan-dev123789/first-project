@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-
 import {  useForm } from "react-hook-form";
 import "./index.css";
-
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registeruser } from "./redux/AsyncActions";

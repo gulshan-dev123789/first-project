@@ -6,6 +6,7 @@ const Profile = () => {
   const {loading,auth,user,message}= useSelector((s)=>s.uses)
 
 
+
   return (
    
     <>  <div className='container-fluid d-flex  flex-column justify-content-center align-items-center '>
@@ -14,7 +15,7 @@ const Profile = () => {
             {auth?( <p className='text-capitalize' >welcome to your profile</p> ):(<p className='text-capitalize'>please register first</p>)}
         </div>
 
-        {user?.image?<><div className='profile-picture' > <img  src={user.image} /> </div></>:<><div className='profile-picture' > <img  src='unknown.png' /> </div></>}
+        {user?.image?.url?<><div className='profile-picture' > <img  src={user.image.url} /> </div></>:<><div className='profile-picture' > <img  src='unknown.png' /> </div></>}
         </div>
 
         <div className='container container-fluid d-flex justify-content-center align-items-center ' >

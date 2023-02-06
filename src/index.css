@@ -125,16 +125,6 @@ div[data-img="one"]{
     cursor: pointer;
 
 }
-@media screen and (max-width: 670px) {
-    .navlogo{
-    margin-left: 0px;
-    font-size: 40px;
-    
-}
-    .submit-button{
-        min-width: 100%;
-    }
-  }
 
 
 
@@ -159,3 +149,73 @@ div[data-img="one"]{
   }
 
 
+.image-fit{
+    height: 400px;
+    width: 300px;
+    border: 1px solid black;
+    padding: 10px;
+}
+.image-cover{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.listingdiv{
+    height: 100px;
+    display: flex;
+    border:1px solid black;
+   
+}
+.child1{
+    width:20%;
+    height: 80px;
+}
+.child1 > img{
+    width:50px;
+    height: 50px;
+    object-fit: cover;
+}
+.child2{
+    width:50%
+    
+}
+.child1{
+    width:20%
+}
+.child1{
+    width:10%
+}
+
+
+@media screen and (max-width: 670px) {
+    .navlogo{
+    margin-left: 0px;
+    font-size: 40px;
+    
+}
+    .submit-button{
+        min-width: 100%;
+        
+    }
+    
+
+  }
+
+
+
+
+  .badgee{
+    left:100%;
+    bottom: 50%;
+  }
+
+
+  .singleproduct {
+    transition: all 0.2s;
+  }
+
+  .singleproduct:hover {
+    transform: scale(1.1) 
+
+  }
